@@ -4,7 +4,7 @@ COPY ./pom.xml .
 COPY ./src ./src
 RUN mvn package
 
-FROM tomcat:jre17-temurin
+FROM tomcat:jre8-temurin
 COPY --from=builder /usr/src/app/target/*.war /usr/local/tomcat/webapps/
 EXPOSE 8080
 CMD ["catalina.sh", "run"]
