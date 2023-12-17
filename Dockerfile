@@ -1,4 +1,4 @@
-FROM maven:3.8.4-openjdk-17-slim AS builder
+FROM maven:3.8.4-openjdk-8-slim AS builder
 WORKDIR /usr/src/app
 COPY ./pom.xml .
 COPY ./src ./src
