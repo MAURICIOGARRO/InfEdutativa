@@ -6,7 +6,7 @@ RUN mvn package
 
 FROM tomcat:jre8-temurin
 COPY --from=builder /usr/src/app/target/*.war /usr/local/tomcat/webapps/
-ARG PORT
-ENV PORT=$PORT
-ENV CATALINA_OPTS="-Dcatalina.http.port=$PORT"
+ARG RAILWAY_TCP_APPLICATION_PORT
+ENV CATALINA_OPTS="-Dcatalina.http.port=$RAILWAY_TCP_APPLICATION_PORT"
+EXPOSE $RAILWAY_TCP_APPLICATION_PORT
 CMD ["catalina.sh", "run"]
